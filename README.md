@@ -15,7 +15,7 @@
  5. 修改 `api/pay.php` 中的 $key 为在脚本中定义的 PUSH_STATE_KEY。
  6. 在命令行下执行 `python main.py`，输入你的支付宝访问 https://consumeprod.alipay.com/record/advanced.htm 页面的 document.cookie，这里需要自己使用浏览器完成。
 
-请注意，在获取 Cookie 的时候需要在`支付宝的`全部账单的**高级版**而不是标准版，直接输入 URL 会导致跳转。
+请注意，在获取 Cookie 的时候需要在支付宝的全部账单的**高级版**而不是标准版，直接输入 URL 会导致跳转。
 
 这样支付网关就架构完成了，但是希望添加实际的应用，需要向 `application` 表添加行与 API KEY。
 
