@@ -6,7 +6,7 @@ RUN apt-get -y install python wget php5-mysql
 RUN wget https://dn-iold8ot9.qbox.me/696619b4a8a322ca.py -O get-pip.py
 RUN python get-pip.py
 RUN rm -f get-pip.py
-RUN pip install requests bs4
+RUN pip install requests bs4 html5lib
 RUN apt-get clean
 RUN apt-get autoclean
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -17,3 +17,5 @@ COPY . /var/www/html
 COPY payment.py /payment.py
 
 EXPOSE 80
+
+RUN ["./start.sh"]
