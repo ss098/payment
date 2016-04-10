@@ -3,19 +3,18 @@
 
 __author__ = "cenegd<cenegd@live.com>"
 
-import requests, time, hashlib, string, urllib
+import requests, time, hashlib, string, urllib, os
 from bs4 import BeautifulSoup
 requests.packages.urllib3.disable_warnings()
 
 # 通知 Web 服务器 URL
-PUSH_STATE_URL = "http://pay.qiyichao.cn/api/pay.php?application=填写你的 API 应用 ID &apikey=填写你的 API KEY &method=new_order"
+PUSH_STATE_URL = "http://pay.qiyichao.cn/api/pay.php?application={0}&apikey={1}&method=new_order".format(os.getenv('PAYMENT_APPLICATION_ID'), os.getenv('PAYMENT_APIKEY'))
 
 # 通知 Web 服务器验签名加密参数，不参与明文传输
-PUSH_STATE_KEY = "input_you_secert_key"
+PUSH_STATE_KEY = os.getenv('PAYMENT_SECERT')
 
 # 将输入的 Cookie 转换为字典类型
 def cookie_string_to_dict(cookiestring):
-
     cookie_dict = {}
     for line in cookiestring.split(";"):
         line_cache = line.split("=")
@@ -25,7 +24,7 @@ def cookie_string_to_dict(cookiestring):
             cookie_dict[cookie_key] = cookie_value
     return cookie_dict
 
-cookie = raw_input("Please input you alipay cookies:")
+cookie = os.getenv('PAYMENT_COOKIE')
 s = requests.Session()
 
 # 已经成功通知服务器的订单列表
@@ -54,7 +53,7 @@ def check_order():
             order_data["desc"] = order.td.find_next("td").find_next("td").p.a.string.encode("utf-8")
         except:
             order_data["desc"] = "get has error"
-        
+
         # 订单号
         order_data["tradeNo"] = order.td.find_next("td").find_next("td").find_next("td").p.text.encode("utf-8").split("|")[0].split(":")[1].strip()
 
@@ -65,7 +64,7 @@ def check_order():
         # 转账金额，支出为负
         order_data["amount"] = float(order.td.find_next("td").find_next("td").find_next("td").find_next("td").find_next("td").span.text[2:])
         #print order_data["amount"]
-        
+
         # 订单状态，通常为交易成功
         order_data["status"] = order.td.find_next("td").find_next("td").find_next("td").find_next("td").find_next("td").find_next("td").find_next("td").p.text
 

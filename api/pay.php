@@ -10,7 +10,7 @@
 **/
 
 // 全局通信密码
-$key = 'input_you_secert_key';
+$key = getenv('PAYMENT_SECERT');
 
 ini_set('display_errors', false);
 error_reporting(0);
@@ -65,7 +65,7 @@ if (isset($_GET['application'], $_GET['method'], $_GET['apikey'])) {
 			$apikey = $application['apikey'];
 
 			if ($method == 'new_order') {
-				
+
 				/* 方法 new_order 开始 */
 
 				if (isset($_POST['sig'], $_POST['tradeNo'], $_POST['desc'], $_POST['time'], $_POST['username'], $_POST['userid'], $_POST['amount'], $_POST['status'])) {
