@@ -17,5 +17,3 @@ COPY . /var/www/html
 COPY payment.py /payment.py
 COPY start.sh /start.sh
 EXPOSE 80
-
-RUN ["/bin/bash", "/start.sh"]
