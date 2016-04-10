@@ -15,7 +15,7 @@ RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
 COPY . /var/www/html
 COPY payment.py /payment.py
-
+COPY start.sh /start.sh
 EXPOSE 80
 
 RUN ["./start.sh"]
