@@ -1,3 +1,3 @@
 #!/bin/bash
 
-python payment.py
+/usr/sbin/apache2ctl -D FOREGROUND
