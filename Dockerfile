@@ -18,4 +18,4 @@ COPY payment.py /payment.py
 COPY start.sh /start.sh
 EXPOSE 80
 
-RUN ["./start.sh"]
+RUN ["/bin/bash", "/start.sh"]
