@@ -8,6 +8,8 @@
 
 `library/medoo.php` 是 pay.php 依赖的数据库处理模块
 
+这个应用正在尝试 Docker 化并正在开发中，如果希望在传统的 Linux 主机下运行，可以自行修改使用到的环境变量部署。
+
 安装步骤：
 
  1. 下载源码得到 script/main.py 文件，依赖 BeautifulSoup 4 以及 requests 模块。
