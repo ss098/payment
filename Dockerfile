@@ -18,4 +18,4 @@ COPY payment.py /payment.py
 COPY start.sh /start.sh
 EXPOSE 80
 
-CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+CMD ["/bin/bash", "/start.sh"]
