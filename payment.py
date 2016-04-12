@@ -99,8 +99,5 @@ def check_order():
 
 if __name__ == "__main__":
     while True:
-        #try:
         check_order()
-        #except Exception, e:
-        #    print "Running error:", Exception, e
         time.sleep(30)
