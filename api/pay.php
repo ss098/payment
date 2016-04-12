@@ -21,7 +21,15 @@ header('Content-Type: application/json');
 
 require_once '../library/medoo.php';
 
-$database = new medoo();
+$database = new medoo(array(
+	'database_type' => getenv('DB_TYPE'),
+	'database_name' => getenv('DB_NAME'),
+	'server' => getenv('DB_SERVER'),
+	'username' => getenv('DB_USERNAME'),
+	'password' => getenv('DB_PASSWORD'),
+	'charset' =>  getenv('DB_CHARSET'),
+	'port' => getenv('DB_PORT')
+));
 
 function message($message_id, $data='') {
 	$message_list = array(
