@@ -1,27 +1,17 @@
-在使用前需要理解，我不会对由于该脚本造成的业务损失负责。
+这个应用正在尝试 Docker 化并正在开发中，如果希望在传统的 Linux 主机下运行，可以自行修改使用到的环境变量部署。
 
-支付宝免签约第三方个人支付网关
-
-`payment.py` 登录到支付宝网站检测支付宝订单并通知 API 服务器
+支付订单业务处理网关，支持支付宝免签约收款。
 
 `api/pay.php` 用于接收订单详细信息并处理 API 请求
 
 `library/medoo.php` 是 pay.php 依赖的数据库处理模块
 
-这个应用正在尝试 Docker 化并正在开发中，如果希望在传统的 Linux 主机下运行，可以自行修改使用到的环境变量部署。
-
 安装步骤：
 
- 1. 下载源码得到 script/main.py 文件，依赖 BeautifulSoup 4 以及 requests 模块。
- 2. 修改 PUSH_STATE_URL 以及 PUSH_STATE_KEY 为实际使用的值。
- 3. 安装支付网关，导入 pay.sql（如果不采用支付网关的话请自行阅读源码理解如何处理数据），依赖 PHP PDO MySQL 扩展。
- 4. 修改 `library/medoo.php` 为自己的数据库信息。
- 5. 修改 `api/pay.php` 中的 $key 为在脚本中定义的 PUSH_STATE_KEY。
- 6. 在命令行下执行 `python main.py`，输入你的支付宝访问 https://consumeprod.alipay.com/record/advanced.htm 页面的 document.cookie，这里需要自己使用浏览器完成。
+ 1. 拷贝代码到虚拟主机目录，导入 pay.sql 至数据库，依赖 PHP PDO MySQL 扩展
+ 2. 定义系统级环境变量 `DB_TYPE` `DB_NAME` `DB_SERVER` `DB_USERNAME` `DB_PASSWORD` `DB_CHARSET` `DB_PORT` `PAYMENT_SECERT` 或者编辑 `api/pay.php` 中定义 $database 及 $key 的代码
 
-请注意，在获取 Cookie 的时候需要在支付宝的全部账单的**高级版**而不是标准版，直接输入 URL 会导致跳转。
-
-这样支付网关就架构完成了，但是希望添加实际的应用，需要向 `application` 表添加行与 API KEY。
+这样支付网关就架构完成了，但是尚未实现支付网关的后台功能，如果希望添加实际的应用，需要向 `application` 表添加行与 API KEY。当然，如果希望能使用支付宝收款，需要额外安装 GitHub 仓库 https://github.com/ss098/payment-script。
 
 用户在充值的时候服务器向支付网关发一个请求，例如：
 
