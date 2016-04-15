@@ -3,7 +3,7 @@ FROM eboraas/apache-php
 MAINTAINER cenegd <cenegd@live.com>
 
 RUN apt-get -y install php5-mysql
-RUN apt-get clean && apt-get autoclean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apt-get update -y && apt-get clean && apt-get autoclean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 

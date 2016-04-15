@@ -1,12 +1,11 @@
 <?php
 
 /**
- * Public Alipay Base Pay Ment Restful API
+ * Public Base Pay Ment Restful API
  * Main File
  * @access private
- * @link http://cenegd.com/
+ * @link https://github.com/ss098/payment
  * @author cenegd <cenegd@live.com>
- * @copyright cenegd
 **/
 
 // 全局通信密码
