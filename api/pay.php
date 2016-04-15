@@ -9,10 +9,10 @@
 **/
 
 // 全局通信密码
-$key = getenv('PAYMENT_SECERT');
+$key = 'INPUT_YOUR_SECERT';
 
-ini_set('display_errors', true);
-error_reporting(E_ALL);
+ini_set('display_errors', false);
+error_reporting(0);
 
 header("Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0");
 header("Pragma: no-cache");
@@ -21,13 +21,13 @@ header('Content-Type: application/json');
 require_once '../library/medoo.php';
 
 $database = new medoo(array(
-	'database_type' => getenv('DB_TYPE'),
-	'database_name' => getenv('DB_NAME'),
-	'server' => getenv('DB_SERVER'),
-	'username' => getenv('DB_USERNAME'),
-	'password' => getenv('DB_PASSWORD'),
-	'charset' =>  getenv('DB_CHARSET'),
-	'port' => getenv('DB_PORT')
+	'database_type' => 'mysql',
+	'database_name' => 'test',
+	'server' => '127.0.0.1',
+	'username' => 'root',
+	'password' => 'root',
+	'charset' =>  'utf8',
+	'port' => 3306
 ));
 
 function message($message_id, $data='') {

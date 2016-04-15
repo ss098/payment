@@ -1,5 +1,3 @@
-这个应用正在尝试 Docker 化并正在开发中，如果希望在传统的 Linux 主机下运行，可以自行修改使用到的环境变量部署或者运行旧版 https://github.com/ss098/payment/tree/8c46b7921250964deb900a387ec55968af028ab4。
-
 支付订单业务处理网关，支持支付宝免签约收款。
 
 `api/pay.php` 用于接收订单详细信息并处理 API 请求
@@ -9,7 +7,7 @@
 安装步骤：
 
  1. 拷贝代码到虚拟主机目录，导入 pay.sql 至数据库，依赖 PHP PDO MySQL 扩展
- 2. 定义系统级环境变量 `DB_TYPE` `DB_NAME` `DB_SERVER` `DB_USERNAME` `DB_PASSWORD` `DB_CHARSET` `DB_PORT` `PAYMENT_SECERT` 或者编辑 `api/pay.php` 中定义 $database 及 $key 的代码
+ 2. 编辑 `api/pay.php` 中定义 $database 及 $key 的代码
 
 这样支付网关就架构完成了，但是尚未实现支付网关的后台功能，如果希望添加实际的应用，需要向 `application` 表添加行与 API KEY。当然，如果希望能使用支付宝收款，需要额外安装 GitHub 仓库 https://github.com/ss098/payment-script。
 
