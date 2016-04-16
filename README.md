@@ -9,7 +9,7 @@
  1. 拷贝代码到虚拟主机目录，导入 pay.sql 至数据库，依赖 PHP PDO MySQL 扩展
  2. 编辑 `api/pay.php` 中定义 $database 及 $key 的代码
 
-这样支付网关就架构完成了，但是尚未实现支付网关的后台功能，如果希望添加实际的应用，需要向 `application` 表添加行与 API KEY。当然，如果希望能使用支付宝收款，需要额外安装 GitHub 仓库 https://github.com/ss098/payment-script。
+这样支付网关就架构完成了，但是尚未实现支付网关的后台功能，如果希望添加实际的应用，需要向 `application` 表添加行与 API KEY。当然，如果希望能使用支付宝收款，需要额外安装 GitHub 仓库 [https://github.com/ss098/payment-script](https://github.com/ss098/payment-script)。
 
 用户在充值的时候服务器向支付网关发一个请求，例如：
 
